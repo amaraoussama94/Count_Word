@@ -1,6 +1,7 @@
 use std::env;
 use std::fs;
 use std::collections::HashMap;
+use std::vec;
 fn main() {
     //red the file and  build vector of individual word
     let contents = match env::args().nth(1){
@@ -24,9 +25,22 @@ fn main() {
     //count  how many time each uniq words occors
     let mut word_count:HashMap<&str,u32> =HashMap::new();
     for word in all_words.iter(){
+        //count num of app this word 
         *word_count.entry(word).or_insert(0)+=1;
 
     }
     //detrmine the most commonly used  word
+    let mut top_count =0u32;
+    let mut top_words:Vec<&str> = Vec::new();
+    for(&key,&val) in word_count.iter(){
+        if val> top_count{
+            top_count=val ;
+            top_words.clear();
+            top_words.push(key);
+        }else if  top_count == val { 
+            top_words.push(key);
+            
+        }
+    }
 
 }
