@@ -43,7 +43,7 @@ fn main() {
         }
     }
     //disply result
-   print!("top word(s) occured {}time",top_count);
+   print!("top word(s) occured {} time ",top_count);
    for word in top_words.iter(){
     println!("{}",word);
    }
